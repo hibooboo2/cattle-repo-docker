@@ -12,8 +12,11 @@ done
 
 function cattle_server(){
 #the magic to determine if cattle server needs to be run restarted or rebuilt.
-    docker rm -vf cattle | echo > /dev/null;docker create --privileged -p 8080:8080 --name=cattle cattleserver
-        
+    if [[ $(docker inspect cattle | jq -r .[0].Name | echo) != "/cattle" ]]; then
+        docker create --privileged -p 8080:8080 --name=cattle cattleserver
+    else
+        docker stop cattle
+    fi
 }
 
 function create_hosts(){
