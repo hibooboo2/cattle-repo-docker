@@ -17,9 +17,10 @@ function cattle_server(){
 }
 
 function create_hosts(){
-    docker rm -vf host1  | echo > /dev/null;docker create --privileged --name=host1 hostcontainer
-    docker rm -vf host2  | echo > /dev/null;docker create --privileged --name=host2 hostcontainer
-    docker rm -vf host3  | echo > /dev/null;docker create --privileged --name=host3 hostcontainer
+    for i in {1..3}
+    do
+        docker rm -vf host$i  | echo > /dev/null;docker create --link=cattle:cattle --privileged --name=host$i hostcontainer
+    done
 }
 
 function start_stuff(){
