@@ -27,8 +27,8 @@ function create_hosts(){
 }
 
 function start_stuff(){
-    docker start host1 host2 host3
-    docker start cattle
+    docker restart host1 host2 host3
+    docker restart cattle
     
 }
 
