@@ -16,6 +16,7 @@ function cattleServer(){
         docker run -d --privileged -p 8080:8080 --ip=172.17.0.20 --name=cattle cattleserver
     else
         docker restart cattleserver
+    fi
     
 }
 
