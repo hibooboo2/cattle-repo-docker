@@ -17,9 +17,9 @@ function cattle_server(){
 }
 
 function create_hosts(){
-    docker rm -vf host1  | echo > /dev/null;docker create --privileged -p 9345:9345 --name=host1 hostcontainer
-    docker rm -vf host2  | echo > /dev/null;docker create --privileged -p 9345:9345 --name=host2 hostcontainer
-    docker rm -vf host3  | echo > /dev/null;docker create --privileged -p 9345:9345 --name=host3 hostcontainer
+    docker rm -vf host1  | echo > /dev/null;docker create --privileged --name=host1 hostcontainer
+    docker rm -vf host2  | echo > /dev/null;docker create --privileged --name=host2 hostcontainer
+    docker rm -vf host3  | echo > /dev/null;docker create --privileged --name=host3 hostcontainer
 }
 
 function start_stuff(){
