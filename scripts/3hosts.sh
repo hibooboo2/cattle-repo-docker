@@ -24,8 +24,6 @@ cd $(dirname $0)/..
 docker build --rm -t cattleserver .
 cd scripts/
 docker build -t hostcontainer .
-
-docker rm  -fv $(docker ps -qa)
 cattleServer
 docker rm -vf host1  | echo > /dev/null;docker run -d --privileged -p 9345:9345 --name=host1 --ip=172.17.0.21 hostcontainer
 docker rm -vf host2  | echo > /dev/null;docker run -d --privileged -p 9345:9345 --name=host2 --ip=172.17.0.22 hostcontainer
