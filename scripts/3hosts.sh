@@ -12,10 +12,10 @@ done
 
 function cattleServer(){
 #the magic to determine if cattle server needs to be run restarted or rebuilt.
-    if [[ $(docker inspect cattleserver | jq -r .[0].Id) == "null" ]]; then
+    if [[ $(docker inspect cattle | jq -r .[0].Id | echo) == "null" ]]; then
         docker run -d --privileged -p 8080:8080 --ip=172.17.0.20 --name=cattle cattleserver
     else
-        docker restart cattleserver
+        docker restart cattle
     fi
     
 }
