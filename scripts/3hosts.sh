@@ -36,6 +36,6 @@ cd $(dirname $0)/..
 docker build --rm -t cattleserver .
 cd scripts/
 docker build -t hostcontainer .
-create_hosts
 cattle_server
+create_hosts
 start_stuff
