@@ -1,4 +1,4 @@
-FROM rancher/docker-dind-base:v0.4.1
+FROM rancher/docker-dind-base:latest
 MAINTAINER James Harris <james@rancher.com> @wizardofmath
 
 ADD ./ /mybin
