@@ -4,6 +4,7 @@ MAINTAINER Bill Maxwell "<bill@rancher.com>"
 
 COPY ./scripts /opt/cattle/scripts
 RUN /opt/cattle/scripts/bootstrap
+RUN /opt/cattle/scripts/git-manager
 
 VOLUME /opt/cattle
 
