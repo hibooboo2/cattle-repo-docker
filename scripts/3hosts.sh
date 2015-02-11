@@ -13,7 +13,7 @@ done
 function cattle_server(){
 #the magic to determine if cattle server needs to be run restarted or rebuilt.
     if [[ $(docker inspect cattle | jq -r .[0].Name) != "/cattle" ]]; then
-        docker create --privileged -v /var/lib/docker:/var/lib/docker -p 8080:8080 --name=cattle cattleserver
+        docker create --privileged -p 8080:8080 --name=cattle cattleserver
     else
         docker stop cattle
     fi
@@ -22,7 +22,7 @@ function cattle_server(){
 function create_hosts(){
     for i in {1..3}
     do
-        docker rm -vf host$i  | echo > /dev/null;docker create  -v /var/lib/docker:/var/lib/docker --link=cattle:cattle --privileged --name=host$i hostcontainer
+        docker rm -vf host$i  | echo > /dev/null;docker create --link=cattle:cattle --privileged --name=host$i hostcontainer
     done
 }
 
