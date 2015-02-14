@@ -6,7 +6,7 @@ cd $(dirname $0)
 
 mkdir /source/bin
 wget http://stedolan.github.io/jq/download/linux64/jq
-mv /jq /source/bin/jq
+mv ./jq /source/bin/jq
 chmod u+rwx /source/bin/jq
 
 export PATH="${PATH}:/source/bin/"
