@@ -2,6 +2,8 @@
 
 set -e
 
+git clone https://github.com/rancherio/build-master-scripts.git
+
 function create_hosts(){
     cattleip=$(docker inspect sleepy_carson | jq -r .[0].NetworkSettings.IPAddress)
     for i in {1..3}
