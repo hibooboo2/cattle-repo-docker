@@ -19,7 +19,7 @@ function create_hosts(){
     cattleip=$(docker inspect cattle | jq -r .[0].NetworkSettings.IPAddress)
     for i in {1..3}
     do 
-        docker rm -vf host$i  | echo > /dev/null;docker run -v /var/tmp/rancher/host${i}env/:/var/lib/docker --privileged --name=host$i rancher/node-simulator $cattleip:8080
+        docker rm -vf host$i  | echo > /dev/null;docker run -d -v /var/tmp/rancher/host${i}env/:/var/lib/docker --privileged --name=host$i rancher/node-simulator $cattleip:8080
 #        docker rm -vf host$i  | echo > /dev/null;docker create -v /var/tmp/rancher/host$ienv/:/var/lib/docker --link=cattle:cattle --privileged --name=host$i hostcontainer
     done
 }
