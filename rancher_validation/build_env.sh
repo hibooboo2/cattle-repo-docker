@@ -2,6 +2,7 @@
 
 set -e
 
+cd $(dirname $0)
 git clone https://github.com/rancherio/build-master-scripts.git
 
 function create_hosts(){
