@@ -2,13 +2,22 @@
 
 set -e
 
+cd $(dirname $0)
+
+wget http://stedolan.github.io/jq/download/linux64/jq
+mv ./jq /source/bin/jq
+mkdir /source
+mkdir /source/bin
+chmod u+rwx /source/bin/jq
+
+export PATH="${PATH}:/source/bin/"
+
 wrapdocker
 
-cd $(dirname $0)
 git clone https://github.com/rancherio/build-master-scripts.git
 
 function create_hosts(){
-    cattleip=$(docker inspect sleepy_carson | jq -r .[0].NetworkSettings.IPAddress)
+    cattleip=$(docker inspect cattle | jq -r .[0].NetworkSettings.IPAddress)
     for i in {1..3}
     do 
         docker rm -vf host$i  | echo > /dev/null;docker run -v /var/tmp/rancher/host$ienv/:/var/lib/docker --privileged --name=host$i rancher/node-simulator $cattleip:8080
