@@ -11,9 +11,9 @@ function create_hosts(){
     done
 }
 
-cd $(dirname $0)/..
+cd $(dirname $0)/build-master-scripts/
 docker build --rm -t cattleservercontainer .
-docker restart cattle || docker create --privileged -v /var/tmp/rancher/masterenv/:/var/lib/docker -p 8080:8080 --name=cattle cattleservercontainer
+docker restart cattle || docker run -d --privileged -v /var/tmp/rancher/masterenv/:/var/lib/docker -p 8080:8080 --name=cattle cattleservercontainer
 create_hosts
 while sleep 10
 do
