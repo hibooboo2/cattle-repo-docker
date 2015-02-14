@@ -4,7 +4,6 @@ set -e
 
 cd $(dirname $0)
 
-mkdir /source
 mkdir /source/bin
 wget http://stedolan.github.io/jq/download/linux64/jq
 mv /jq /source/bin/jq
